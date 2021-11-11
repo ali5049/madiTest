@@ -19,6 +19,6 @@ app.get("/", function (req, res) {
 
 app.use('/api/calculator',calculatorRoutes );
 
-app.listen(port, function () {
+app.listen(80, function () {
   console.log("listening at port",process.env.PORT)
 });
