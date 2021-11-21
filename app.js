@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const proxy = require('pass-cors')
-app.use('/proxy', proxy);
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -12,9 +12,8 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 5
 // Init middleware
 app.use(express.json({ extended: false }));
 app.use(express.static('public'));
-
 const calculatorRoutes = require('./routers/calculator');
-
+app.use('/proxy', proxy);
 app.get("/", function (req, res) {
   res.send("Server is running");
 });
